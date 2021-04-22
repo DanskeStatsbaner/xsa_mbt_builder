@@ -1,5 +1,5 @@
 FROM alpine:latest as alpine
-RUN apk add --no-cache make npm
+RUN apk add --update --no-cache make npm 
 
 FROM devxci/mbtci-alpine:latest as mbtci
 
