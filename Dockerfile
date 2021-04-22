@@ -7,10 +7,9 @@ ARG MBT_USER_HOME=/home/mbt
 
 COPY --from=alpine / /
 
-RUN adduser --home "${MBT_USER_HOME}" \
-            --create-home \
-            --shell /bin/bash \
-            --uid 1000 \
+RUN adduser -h "${MBT_USER_HOME}" \
+            -s /bin/bash \
+            -u 1000 \
             mbt
 
 RUN chmod -R 777 "${MBT_USER_HOME}"
