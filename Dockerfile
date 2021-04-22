@@ -14,6 +14,6 @@ RUN adduser -h "${MBT_USER_HOME}" \
             mbt
 
 RUN chmod -R 777 "${MBT_USER_HOME}"
-RUN chown -R 1000:1000 ./
+RUN chown -R 1000:1000 "${MBT_USER_HOME}"
 
 USER mbt
