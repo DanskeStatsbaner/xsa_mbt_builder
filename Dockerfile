@@ -10,6 +10,7 @@ COPY --from=alpine / /
 RUN adduser -h "${MBT_USER_HOME}" \
             -s /bin/bash \
             -u 1000 \
+            -D \
             mbt
 
 RUN chmod -R 777 "${MBT_USER_HOME}"
