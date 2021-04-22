@@ -11,12 +11,12 @@ pipeline {
         disableConcurrentBuilds()
     }
     environment {
-        projectName  = "xsa_mta_builder"
+        projectName  = "xsa_mbt_builder"
         deployTo = "sit"
         version = "1.0.0.${env.BUILD_NUMBER}"
         suffix = "${env.GIT_COMMIT}-${env.GIT_BRANCH.replace('/', '-')}"
         packageVersion = "${version}-${suffix}"
-        jobName = "XSA_MTA_BUILDER"
+        jobName = "XSA_MBT_BUILDER"
         artifactoryServerId = "artifactory"   
     }
     stages {
