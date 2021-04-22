@@ -1,8 +1,8 @@
-FROM alpine:latest
+FROM alpine:latest as alpine
 RUN apk add --no-cache make 
-RUN cp ./usr/lib/make make
 
-FROM devxci/mbtci-alpine:latest
+FROM devxci/mbtci-alpine:latest as mbtci
+COPY --FROM=alpine // 
 
 # RUN apk add --no-cache gcc musl-dev make
 
