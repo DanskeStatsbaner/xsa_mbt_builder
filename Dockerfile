@@ -1,5 +1,5 @@
 FROM alpine:latest as alpine
-RUN apk add --no-cache make npm useradd
+RUN apk add --no-cache make npm
 
 FROM devxci/mbtci-alpine:latest as mbtci
 
@@ -7,12 +7,11 @@ ARG MBT_USER_HOME=/home/mbt
 
 COPY --from=alpine / /
 
-RUN useradd --home-dir "${MBT_USER_HOME}" \
+RUN adduser --home "${MBT_USER_HOME}" \
             --create-home \
             --shell /bin/bash \
-            --user-group \
             --uid 1000 \
-            --comment 'Cloud MTA Build Tool' mbt
+            mbt
 
 RUN chmod -R 777 "${MBT_USER_HOME}"
 RUN chown -R 1000:1000 ./
