@@ -1,5 +1,12 @@
 FROM alpine:latest as alpine
-RUN apk add --update --no-cache make npm 
+# RUN apk add --update --no-cache make npm 
+
+RUN apk add --no-cache --virtual .gyp \
+        python \
+        make \
+        g++ \
+    && npm install \
+    && apk del .gyp
 
 FROM devxci/mbtci-alpine:latest as mbtci
 
