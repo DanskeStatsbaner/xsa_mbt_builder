@@ -1,5 +1,5 @@
 FROM alpine:latest as alpine
-RUN apk add --update --no-cache make npm g++
+RUN apk add --update --no-cache make npm g++ python
 
 #RUN apk add --no-cache --virtual .gyp \
 #        python \
