@@ -1,5 +1,5 @@
 FROM alpine:latest as alpine
-RUN apk add --update --no-cache make npm g++ python
+RUN apk add --update --no-cache make npm
 
 #RUN apk add --no-cache --virtual .gyp \
 #        python \
@@ -8,11 +8,15 @@ RUN apk add --update --no-cache make npm g++ python
 #    && npm install \
 #    && apk del .gyp
 
+FROM python:latest as python
+
+COPY --from=alpine / /
+
 FROM devxci/mbtci-alpine:latest as mbtci
 
 ARG MBT_USER_HOME=/home/mbt
 
-COPY --from=alpine / /
+COPY --from=python / /
 
 RUN adduser -h "${MBT_USER_HOME}" \
             -s /bin/bash \
